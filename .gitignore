@@ -1,6 +1,5 @@
 # Clion
 .idea/
-.clion.source.upload.marker
 
 # CMake
 cmake-build-*/
