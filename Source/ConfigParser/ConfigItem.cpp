@@ -39,7 +39,7 @@ namespace PWol::Config {
 		bool hasValidConfigFile = false;
 
 		// Do check all potential dir may exist config file
-		for (const auto &potentialPath: potential_config_dir)
+		for (const auto& potentialPath: potential_config_dir)
 		{
 			const auto configDirPath = std::filesystem::path(potentialPath);
 			if (!std::filesystem::exists(configDirPath))
@@ -78,9 +78,9 @@ namespace PWol::Config {
 		}
 
 #ifdef PWOL_DEBUG
-		catch (Json::exception &exception)
+		catch (Json::exception& exception)
 		{
-			auto &logger = PWol::LogUtils::GetInstance();
+			auto& logger = PWol::LogUtils::GetInstance();
 			logger.LogError(exception.what());
 			return false;
 		}

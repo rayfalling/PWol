@@ -9,7 +9,7 @@
 
 int main()
 {
-	auto &logger = PWol::LogUtils::GetInstance();
+	auto& logger = PWol::LogUtils::GetInstance();
 
 	// Switch to daemon mode
 #ifndef PWOL_DEBUG

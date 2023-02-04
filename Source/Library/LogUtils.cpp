@@ -53,49 +53,49 @@ PWol::LogUtils::LogUtils()
 	_logger->enable_backtrace(1024);
 }
 
-void PWol::LogUtils::LogInfo(std::string &&message)
+void PWol::LogUtils::LogInfo(std::string&& message)
 {
 	_logger->info(message);
 	_logger->flush();
 }
 
-void PWol::LogUtils::LogInfo(const std::string &message)
+void PWol::LogUtils::LogInfo(const std::string& message)
 {
 	_logger->info(message);
 	_logger->flush();
 }
 
-void PWol::LogUtils::LogWarning(std::string &&message)
+void PWol::LogUtils::LogWarning(std::string&& message)
 {
 	_logger->warn(message);
 	_logger->flush();
 }
 
-void PWol::LogUtils::LogWarning(const std::string &message)
+void PWol::LogUtils::LogWarning(const std::string& message)
 {
 	_logger->warn(message);
 	_logger->flush();
 }
 
-void PWol::LogUtils::LogError(std::string &&message)
+void PWol::LogUtils::LogError(std::string&& message)
 {
 	_logger->error(message);
 	_logger->flush();
 }
 
-void PWol::LogUtils::LogError(const std::string &message)
+void PWol::LogUtils::LogError(const std::string& message)
 {
 	_logger->error(message);
 	_logger->flush();
 }
 
-void PWol::LogUtils::LogDebug(std::string &&message)
+void PWol::LogUtils::LogDebug(std::string&& message)
 {
 	_logger->debug(message);
 	_logger->flush();
 }
 
-void PWol::LogUtils::LogDebug(const std::string &message)
+void PWol::LogUtils::LogDebug(const std::string& message)
 {
 	_logger->debug(message);
 	_logger->flush();

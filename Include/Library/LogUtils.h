@@ -30,13 +30,13 @@ namespace PWol {
 		~LogUtils() noexcept override;
 
 	public:
-		LogUtils(const LogUtils &) = delete;
+		LogUtils(const LogUtils&) = delete;
 
-		LogUtils(const LogUtils &&) = delete;
+		LogUtils(const LogUtils&&) = delete;
 
-		LogUtils &operator=(const LogUtils &) = delete;
+		LogUtils& operator=(const LogUtils&) = delete;
 
-		LogUtils &operator=(LogUtils &&) = delete;
+		LogUtils& operator=(LogUtils&&) = delete;
 
 	private:
 		/* Core logger, static for over dll use */
@@ -49,30 +49,30 @@ namespace PWol {
 		/**
 		 * Log debug info
 		 * */
-		[[maybe_unused]] void LogDebug(std::string &&message);
+		[[maybe_unused]] void LogDebug(std::string&& message);
 
-		[[maybe_unused]] void LogDebug(const std::string &message);
+		[[maybe_unused]] void LogDebug(const std::string& message);
 
 		/**
 		 * Log default info
 		 * */
-		[[maybe_unused]] void LogInfo(std::string &&message);
+		[[maybe_unused]] void LogInfo(std::string&& message);
 
-		[[maybe_unused]] void LogInfo(const std::string &message);
+		[[maybe_unused]] void LogInfo(const std::string& message);
 
 		/**
 		 * Log warning info
 		 * */
-		[[maybe_unused]] void LogWarning(std::string &&message);
+		[[maybe_unused]] void LogWarning(std::string&& message);
 
-		[[maybe_unused]] void LogWarning(const std::string &message);
+		[[maybe_unused]] void LogWarning(const std::string& message);
 
 		/**
 		 * Log error info
 		 * */
-		[[maybe_unused]] void LogError(std::string &&message);
+		[[maybe_unused]] void LogError(std::string&& message);
 
-		[[maybe_unused]] void LogError(const std::string &message);
+		[[maybe_unused]] void LogError(const std::string& message);
 
 		/* Set all logger level */
 		[[maybe_unused]] void SetLogLevel(LogLevel logLevel);

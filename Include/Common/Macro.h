@@ -15,7 +15,7 @@
 #elif __cplusplus == 201103L
 	#define CPP_VERSION 11
 #else
-	// version below c++11
+// version below c++11
 	#define CPP_VERSION 0
 #endif
 

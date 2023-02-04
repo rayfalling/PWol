@@ -9,7 +9,7 @@
 
 bool PWol::PWolMain::Init()
 {
-	auto &logger = PWol::LogUtils::GetInstance();
+	auto& logger = PWol::LogUtils::GetInstance();
 
 #ifdef PWOL_DEBUG
 	logger.SetLogLevel(PWol::LogLevel::Debug);
