@@ -19,6 +19,7 @@ file(GLOB_RECURSE PWOL_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/Include/*)
 
 # Source Directory
 aux_source_directory(Source PWOL_SOURCE)
+aux_source_directory(Source/Common PWOL_SOURCE)
 aux_source_directory(Source/Library PWOL_SOURCE)
 aux_source_directory(Source/ConfigParser PWOL_SOURCE)
 
@@ -44,3 +45,9 @@ set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER PWol)
 
 # Link properties
 target_link_libraries(${PROJECT_NAME} PUBLIC spdlog::spdlog PRIVATE fmt::fmt)
+
+# Set copy config to binary dir
+set("PWOL_CONFIG_DIR" ${CMAKE_CURRENT_SOURCE_DIR}/config/)
+foreach("copy_file" ${PWOL_CONFIG_DIR})
+    file(COPY ${copy_file} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/config)
+endforeach()

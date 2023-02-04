@@ -27,14 +27,21 @@ PWol::LogUtils::LogUtils()
 	consoleSink->set_level(spdlog::level::info);
 
 #ifdef PWOL_DEBUG
-	const std::string outFilePath = "/var/log/pwol.log";
-#else
 	const std::string outFilePath = "./log/pwol.log";
+#else
+	const std::string outFilePath = "/var/log/pwol.log";
 #endif
 	auto fileSink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
 			outFilePath, 8 * 1024 * 1024, 3, true
 	);
+
 	fileSink->set_level(spdlog::level::info);
+
+#ifdef PWOL_DEBUG
+	// Debug mode output
+	fileSink->set_level(spdlog::level::debug);
+	consoleSink->set_level(spdlog::level::debug);
+#endif
 
 	_sinks.emplace_back(consoleSink);
 	_sinks.emplace_back(fileSink);
@@ -46,12 +53,6 @@ PWol::LogUtils::LogUtils()
 	_logger->enable_backtrace(1024);
 }
 
-void PWol::LogUtils::LogInfo(std::string &message)
-{
-	_logger->info(message);
-	_logger->flush();
-}
-
 void PWol::LogUtils::LogInfo(std::string &&message)
 {
 	_logger->info(message);
@@ -61,12 +62,6 @@ void PWol::LogUtils::LogInfo(std::string &&message)
 void PWol::LogUtils::LogInfo(const std::string &message)
 {
 	_logger->info(message);
-	_logger->flush();
-}
-
-void PWol::LogUtils::LogWarning(std::string &message)
-{
-	_logger->warn(message);
 	_logger->flush();
 }
 
@@ -82,12 +77,6 @@ void PWol::LogUtils::LogWarning(const std::string &message)
 	_logger->flush();
 }
 
-void PWol::LogUtils::LogError(std::string &message)
-{
-	_logger->error(message);
-	_logger->flush();
-}
-
 void PWol::LogUtils::LogError(std::string &&message)
 {
 	_logger->error(message);
@@ -97,12 +86,6 @@ void PWol::LogUtils::LogError(std::string &&message)
 void PWol::LogUtils::LogError(const std::string &message)
 {
 	_logger->error(message);
-	_logger->flush();
-}
-
-void PWol::LogUtils::LogDebug(std::string &message)
-{
-	_logger->debug(message);
 	_logger->flush();
 }
 

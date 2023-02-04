@@ -22,70 +22,63 @@ namespace PWol {
 
 	class LogUtils final : public ISingletonObject<LogUtils>
 	{
-			friend class ISingletonObject<LogUtils>;
+		friend class ISingletonObject<LogUtils>;
 
-		protected:
-			LogUtils();
+	protected:
+		LogUtils();
 
-			~LogUtils() noexcept override;
+		~LogUtils() noexcept override;
 
-		public:
-			LogUtils(const LogUtils &) = delete;
+	public:
+		LogUtils(const LogUtils &) = delete;
 
-			LogUtils(const LogUtils &&) = delete;
+		LogUtils(const LogUtils &&) = delete;
 
-			LogUtils &operator=(const LogUtils &) = delete;
+		LogUtils &operator=(const LogUtils &) = delete;
 
-			LogUtils &operator=(LogUtils &&) = delete;
+		LogUtils &operator=(LogUtils &&) = delete;
 
-		private:
-			/* Core logger, static for over dll use */
-			static std::shared_ptr<spdlog::logger> _logger;
+	private:
+		/* Core logger, static for over dll use */
+		static std::shared_ptr<spdlog::logger> _logger;
 
-			/* Shared sinks between different loggers */
-			static std::vector<spdlog::sink_ptr> _sinks;
+		/* Shared sinks between different loggers */
+		static std::vector<spdlog::sink_ptr> _sinks;
 
-		public:
-			/**
-			 * Log debug info
-			 * */
-			void LogDebug(std::string &message);
+	public:
+		/**
+		 * Log debug info
+		 * */
+		[[maybe_unused]] void LogDebug(std::string &&message);
 
-			void LogDebug(std::string &&message);
+		[[maybe_unused]] void LogDebug(const std::string &message);
 
-			void LogDebug(const std::string &message);
+		/**
+		 * Log default info
+		 * */
+		[[maybe_unused]] void LogInfo(std::string &&message);
 
-			/**
-			 * Log default info
-			 * */
-			void LogInfo(std::string &message);
+		[[maybe_unused]] void LogInfo(const std::string &message);
 
-			void LogInfo(std::string &&message);
+		/**
+		 * Log warning info
+		 * */
+		[[maybe_unused]] void LogWarning(std::string &&message);
 
-			void LogInfo(const std::string &message);
+		[[maybe_unused]] void LogWarning(const std::string &message);
 
-			/**
-			 * Log warning info
-			 * */
-			void LogWarning(std::string &message);
+		/**
+		 * Log error info
+		 * */
+		[[maybe_unused]] void LogError(std::string &&message);
 
-			void LogWarning(std::string &&message);
+		[[maybe_unused]] void LogError(const std::string &message);
 
-			void LogWarning(const std::string &message);
+		/* Set all logger level */
+		[[maybe_unused]] void SetLogLevel(LogLevel logLevel);
 
-			/**
-			 * Log error info
-			 * */
-			void LogError(std::string &message);
-
-			void LogError(std::string &&message);
-
-			void LogError(const std::string &message);
-
-			void SetLogLevel(LogLevel logLevel);
-
-			/* Flush all */
-			void FlushAll();
+		/* Flush all */
+		[[maybe_unused]] void FlushAll();
 	};
 }
 
